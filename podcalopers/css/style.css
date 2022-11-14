@@ -156,6 +156,24 @@ h3{font-size: 2.4rem;}
 
 }
 
+.producto__submit{
+    background-color: var(--secundario);
+    border: none;
+    font-size: 2rem;
+    font-family: var(--fuentePrincipal);
+    padding: 2rem;
+    transition: background-color .3s ease;
+    text-align: center;
+    width: 100%;
+
+}
+
+.producto__submit:hover{
+    cursor: pointer;
+    background-color: var(--secundarioOscuro);
+
+}
+
 /**************GRAFICO**************/
 .grafico{
     min-height: 30rem;
