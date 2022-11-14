@@ -17,7 +17,7 @@ include("conexion.php");
 <body>
     <header class="header">
         <a href="index.php">
-            <img class="header__logo" src="img/logo.png" alt="Logotipo">
+            <img class="header__logo" src="../../admin/files/logo/<?=$configuracion['conf_logo'];?>" alt="Logotipo">
 
         </a>
 
@@ -62,8 +62,8 @@ include("conexion.php");
                     <div class="producto__informacion">
                         <p class="producto__nombre"><?=$result['cprod_nombre'];?></p>
                         <p class="producto__precio">$<?=number_format($result['cprod_costo'],0,",",".");?></p>
-                        <a href="https://api.whatsapp.com/send?phone=573156650193&text=hola, quiero adquirir el <?=$result['cprod_nombre'];?>." target="_target">
-                            <input class="producto__submit" value="Comprar">
+                        <a href="https://api.whatsapp.com/send?phone=57<?=$configuracion['conf_telefono'];?>&text=hola, quiero adquirir el <?=$result['cprod_nombre'];?>." target="_blank">
+                            <input class="producto__submit" type="submit" value="Comprar">
                         </a>
 
                     </div>
