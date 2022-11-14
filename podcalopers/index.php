@@ -32,7 +32,7 @@ include("conexion.php");
             $cat=$_GET['cat'];
             $activo='navegacion__enlace--activo';
         }
-        $categorias= $conexionBdComercial->query("SELECT * FROM comercial_categorias WHERE ccat_id_empresa=1");
+        $categorias= $conexionBdComercial->query("SELECT * FROM comercial_categorias WHERE ccat_id_empresa=2");
         while($result = mysqli_fetch_array($categorias, MYSQLI_BOTH)){
         ?>
         <a class="navegacion__enlace <?php if($result['ccat_id']==$cat){echo $activo;}?>" href="index.php?cat=<?=$result['ccat_id'];?>"><?=$result['ccat_nombre'];?></a>
@@ -43,12 +43,12 @@ include("conexion.php");
     <main class="contenedor">
         <h1>Nuestros Productos</h1>
         <?php
-        $consulta="SELECT * FROM comercial_productos WHERE cprod_id_empresa=1";
+        $consulta="SELECT * FROM comercial_productos WHERE cprod_id_empresa=2";
         if(isset($_GET['cat'])){
             $consulta="SELECT * FROM comercial_productos 
             INNER JOIN comercial_marcas ON cmar_id=cprod_marca 
             INNER JOIN comercial_categorias ON ccat_id=cmar_categoria 
-            WHERE cprod_id_empresa=1 AND ccat_id='".$_GET['cat']."'";
+            WHERE cprod_id_empresa=2 AND ccat_id='".$_GET['cat']."'";
         }
         ?>
         <div class="grid">
