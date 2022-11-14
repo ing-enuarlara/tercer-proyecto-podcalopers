@@ -1,3 +1,8 @@
+<?php
+include("conexion.php");
+$productos= $conexionBdComercial->query("SELECT * FROM comercial_productos WHERE cprod_id='".$_GET['id']."'");
+$resultadoP = mysqli_fetch_array($productos, MYSQLI_BOTH);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +18,7 @@
 </head>
 <body>
     <header class="header">
-        <a href="index.html">
+        <a href="index.php">
             <img class="header__logo" src="img/logo.png" alt="Logotipo">
 
         </a>
@@ -21,37 +26,21 @@
     </header>
 
     <nav class="navegacion">
-        <a class="navegacion__enlace" href="index.html">Tienda</a>
-        <a class="navegacion__enlace" href="nosotros.html">Nosotros</a>
-
+        <a class="navegacion__enlace" href="index.php">Tienda</a>
+        <a class="navegacion__enlace navegacion__enlace--activo" href="#">Productos</a>
     </nav>
 
     <main class="contenedor">
-        <h1>React JS</h1>
+        <h1><?=$resultadoP['cprod_nombre'];?></h1>
 
         <div class="camisa">
-            <img src="img/3.jpg" alt="imagen del producto" class="camisa__imagen">
+            <img src="../../admin/files/productos/<?=$resultadoP['cprod_foto'];?>" alt="imagen del producto" class="camisa__imagen">
 
             <div class="camisa__contenido">
-                <p>Nulla nec dui ac mi accumsan blandit. Ut tincidunt mollis convallis. Vivamus dapibus nulla ac posuere
-                    laoreet. Fusce tristique semper enim quis condimentum. Nulla interdum, dui vitae mollis ornare, enim urna
-                    ultrices lectus, vitae sollicitudin ex orci fringilla tellus. Curabitur luctus arcu quis consequat congue.</p>
-
-                <form class="formulario">
-                    <select class="formulario__campo">
-                        <option disabled selected>-- Seleccionar Talla --</option>
-                        <option>Chica</option>
-                        <option>Madiana</option>
-                        <option>Grande</option>
-
-                    </select>
-
-                    <input class="formulario__campo" type="number" placeholder="Cantidad" min="1">
-
-                    <input class="formulario__submit" type="submit" value="Agregar al Carrito">
-
-                </form>
-
+                <p><?=$resultadoP['cprod_detalles'];?>.</p>
+                <a href="https://api.whatsapp.com/send?phone=573156650193&text=hola, quiero adquirir el <?=$resultadoP['cprod_nombre'];?>." target="_target">
+                    <input class="producto__submit" value="Comprar">
+                </a>
             </div>
 
         </div>
