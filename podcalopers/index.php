@@ -1,3 +1,6 @@
+<?php
+include("conexion.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +16,7 @@
 </head>
 <body>
     <header class="header">
-        <a href="index.html">
+        <a href="index.php">
             <img class="header__logo" src="img/logo.png" alt="Logotipo">
 
         </a>
@@ -21,45 +24,55 @@
     </header>
 
     <nav class="navegacion">
-        <a class="navegacion__enlace navegacion__enlace--activo" href="index.html">Tienda</a>
-        <a class="navegacion__enlace" href="nosotros.html">Nosotros</a>
-
+        <a class="navegacion__enlace <?php if(!isset($_GET['cat'])){echo 'navegacion__enlace--activo';}?>" href="index.php">Tienda</a>
+        <?php
+        $activo='';
+        $cat='';
+        if(isset($_GET['cat'])){
+            $cat=$_GET['cat'];
+            $activo='navegacion__enlace--activo';
+        }
+        $categorias= $conexionBdComercial->query("SELECT * FROM comercial_categorias WHERE ccat_id_empresa=1");
+        while($result = mysqli_fetch_array($categorias, MYSQLI_BOTH)){
+        ?>
+        <a class="navegacion__enlace <?php if($result['ccat_id']==$cat){echo $activo;}?>" href="index.php?cat=<?=$result['ccat_id'];?>"><?=$result['ccat_nombre'];?></a>
+        <?php }?>
+        <a class="navegacion__enlace" href="nosotros.php">Nosotros</a>
     </nav>
 
     <main class="contenedor">
         <h1>Nuestros Productos</h1>
-
+        <?php
+        $consulta="SELECT * FROM comercial_productos WHERE cprod_id_empresa=1";
+        if(isset($_GET['cat'])){
+            $consulta="SELECT * FROM comercial_productos 
+            INNER JOIN comercial_marcas ON cmar_id=cprod_marca 
+            INNER JOIN comercial_categorias ON ccat_id=cmar_categoria 
+            WHERE cprod_id_empresa=1 AND ccat_id='".$_GET['cat']."'";
+        }
+        ?>
         <div class="grid">
+            <?php
+            $productos= $conexionBdComercial->query($consulta);
+            while($result = mysqli_fetch_array($productos, MYSQLI_BOTH)){
+            ?>
             <div class="producto">
-                <a href="producto.html">
-                    <img class="producto__imagen" src="img/1.jpg" alt="imagen camisa">
-
+                <a href="producto.php?id=<?=$result['cprod_id'];?>">
+                    <img class="producto__imagen" src="../../admin/files/productos/<?=$result['cprod_foto'];?>" alt="imagen producto">
                     <div class="producto__informacion">
-                        <p class="producto__nombre">VueJS</p>
-                        <p class="producto__precio">$25</p>
+                        <p class="producto__nombre"><?=$result['cprod_nombre'];?></p>
+                        <p class="producto__precio">$<?=number_format($result['cprod_costo'],0,",",".");?></p>
+                        <a href="https://api.whatsapp.com/send?phone=573156650193&text=hola, quiero adquirir el <?=$result['cprod_nombre'];?>." target="_target">
+                            <input class="producto__submit" value="Comprar">
+                        </a>
 
                     </div>
-
                 </a>
-
             </div><!--producto-->
+            <?php }?>
 
             <div class="producto">
-                <a href="producto.html">
-                    <img class="producto__imagen" src="img/2.jpg" alt="imagen camisa">
-                    
-                    <div class="producto__informacion">
-                        <p class="producto__nombre">AngularJS</p>
-                        <p class="producto__precio">$25</p>
-
-                    </div>
-
-                </a>
-
-            </div><!--producto-->
-
-            <div class="producto">
-                <a href="producto.html">
+                <a href="producto.php">
                     <img class="producto__imagen" src="img/3.jpg" alt="imagen camisa">
                     
                     <div class="producto__informacion">
