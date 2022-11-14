@@ -16,5 +16,8 @@ $conexionBdComercial = new mysqli(SERVER, USER, PASS, BDMODCOMERCIAL);
 $conexionBdMicuenta = new mysqli(SERVER, USER, PASS, BDMODMICUENTA);
 $conexionBdSistema = new mysqli(SERVER, USER, PASS, BDMODSISTEMA);
 
+$consultaConfig = $conexionBdGeneral->query("SELECT * FROM configuracion WHERE conf_id_empresa=2");
+$configuracion = mysqli_fetch_array($consultaConfig, MYSQLI_BOTH);
+
 
 const REDIRECT_ROUTE = 'http://localhost/tercer-proyecto-podcalopers/podcalopers/';
