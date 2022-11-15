@@ -19,5 +19,7 @@ $conexionBdSistema = new mysqli(SERVER, USER, PASS, BDMODSISTEMA);
 $consultaConfig = $conexionBdGeneral->query("SELECT * FROM configuracion WHERE conf_id_empresa=2");
 $configuracion = mysqli_fetch_array($consultaConfig, MYSQLI_BOTH);
 
+$consultaConfigColor = $conexionBdGeneral->query("SELECT * FROM general_color_store WHERE gcs_id_empresa=1");
+$configuracionColor = mysqli_fetch_array($consultaConfigColor, MYSQLI_BOTH);
 
 const REDIRECT_ROUTE = 'http://localhost/tercer-proyecto-podcalopers/podcalopers/';
