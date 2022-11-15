@@ -1,11 +1,17 @@
+<?php
+
+    header("Content-Type: text/css; charset: UTF-8");
+
+    include("../conexion.php");
+?>
 /*font-family: 'Staatliches', cursive;*/
 :root{
-    --primario:#9c27b0;
-    --primarioOscuro:#89119d;
-    --secundario:#ffce00;
-    --secundarioOscuro:rgb(233,287,2);
-    --blanco:#FFFFFF;
-    --negro:#000000;
+    --primario:<?=$configuracionColor['gcs_primario'];?>;
+    --primarioOscuro:<?=$configuracionColor['gcs_primarioOscuro'];?>;
+    --secundario:<?=$configuracionColor['gcs_secundario'];?>;
+    --secundarioOscuro:<?=$configuracionColor['gcs_secundarioOscuro'];?>;
+    --blanco:<?=$configuracionColor['gcs_blanco'];?>;
+    --negro:<?=$configuracionColor['gcs_negro'];?>;
 
     --fuentePrincipal:'Staatliches', cursive;
 
