@@ -29,7 +29,7 @@ include("includes/head.php");
                     laoreet. Fusce tristique semper enim quis condimentum. Nulla interdum, dui vitae mollis ornare, enim urna
                     ultrices lectus, vitae sollicitudin ex orci fringilla tellus. Curabitur luctus arcu quis consequat congue.</p>
             </div>
-            <img src="img/nosotros.jpg" alt="imagen nosotros" class="nosotros__imagen">
+            <img src="../../admin/files/logo/<?=$configuracion['conf_logo'];?>" alt="imagen nosotros" class="nosotros__imagen" style="width: 350px;">
         </div>
     </main>
 

@@ -189,20 +189,20 @@ h3{font-size: 2.4rem;}
 
 }
 
-.grafico--camisas{
+.grafico--primerBanner{
     grid-row: 2/3;
-    background-image: url(../img/grafico1.jpg);
+    background-image: url(../../../admin/files/banner/<?=$configuracion['conf_primerBanner'];?>);
 
 }
 
-.grafico--node{
-    background-image: url(../img/grafico2.jpg);
+.grafico--segundoBanner{
+    background-image: url(../../../admin/files/banner/<?=$configuracion['conf_segundoBanner'];?>);
     grid-row: 8/9;
 
 }
 
 @media (min-width: 768px) {
-    .grafico--node{
+    .grafico--segundoBanner{
         grid-row: 5/6;
         grid-column: 2/4;
 

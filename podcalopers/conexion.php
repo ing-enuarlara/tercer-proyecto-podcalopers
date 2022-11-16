@@ -16,7 +16,7 @@ $conexionBdComercial = new mysqli(SERVER, USER, PASS, BDMODCOMERCIAL);
 $conexionBdMicuenta = new mysqli(SERVER, USER, PASS, BDMODMICUENTA);
 $conexionBdSistema = new mysqli(SERVER, USER, PASS, BDMODSISTEMA);
 
-$consultaConfig = $conexionBdGeneral->query("SELECT * FROM configuracion WHERE conf_id_empresa=2");
+$consultaConfig = $conexionBdGeneral->query("SELECT * FROM configuracion WHERE conf_id_empresa=1");
 $configuracion = mysqli_fetch_array($consultaConfig, MYSQLI_BOTH);
 
 $consultaConfigColor = $conexionBdGeneral->query("SELECT * FROM general_color_store WHERE gcs_id_empresa=1");

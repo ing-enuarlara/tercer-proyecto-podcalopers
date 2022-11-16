@@ -46,8 +46,8 @@ include("includes/head.php");
                 </a>
             </div><!--producto-->
             <?php }?>
-            <div class="grafico grafico--camisas"></div>
-            <div class="grafico grafico--node"></div>
+            <div class="grafico grafico--primerBanner"></div>
+            <div class="grafico grafico--segundoBanner"></div>
         </div>
     </main>
 
