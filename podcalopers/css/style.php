@@ -1,11 +1,17 @@
+<?php
+
+    header("Content-Type: text/css; charset: UTF-8");
+
+    include("../conexion.php");
+?>
 /*font-family: 'Staatliches', cursive;*/
 :root{
-    --primario:#9c27b0;
-    --primarioOscuro:#89119d;
-    --secundario:#ffce00;
-    --secundarioOscuro:rgb(233,287,2);
-    --blanco:#FFFFFF;
-    --negro:#000000;
+    --primario:<?=$configuracionColor['gcs_primario'];?>;
+    --primarioOscuro:<?=$configuracionColor['gcs_primarioOscuro'];?>;
+    --secundario:<?=$configuracionColor['gcs_secundario'];?>;
+    --secundarioOscuro:<?=$configuracionColor['gcs_secundarioOscuro'];?>;
+    --blanco:<?=$configuracionColor['gcs_blanco'];?>;
+    --negro:<?=$configuracionColor['gcs_negro'];?>;
 
     --fuentePrincipal:'Staatliches', cursive;
 
@@ -156,6 +162,24 @@ h3{font-size: 2.4rem;}
 
 }
 
+.producto__submit{
+    background-color: var(--secundario);
+    border: none;
+    font-size: 2rem;
+    font-family: var(--fuentePrincipal);
+    padding: 2rem;
+    transition: background-color .3s ease;
+    text-align: center;
+    width: 100%;
+
+}
+
+.producto__submit:hover{
+    cursor: pointer;
+    background-color: var(--secundarioOscuro);
+
+}
+
 /**************GRAFICO**************/
 .grafico{
     min-height: 30rem;
@@ -165,20 +189,20 @@ h3{font-size: 2.4rem;}
 
 }
 
-.grafico--camisas{
+.grafico--primerBanner{
     grid-row: 2/3;
-    background-image: url(../img/grafico1.jpg);
+    background-image: url(../../../admin/files/banner/<?=$configuracion['conf_primerBanner'];?>);
 
 }
 
-.grafico--node{
-    background-image: url(../img/grafico2.jpg);
+.grafico--segundoBanner{
+    background-image: url(../../../admin/files/banner/<?=$configuracion['conf_segundoBanner'];?>);
     grid-row: 8/9;
 
 }
 
 @media (min-width: 768px) {
-    .grafico--node{
+    .grafico--segundoBanner{
         grid-row: 5/6;
         grid-column: 2/4;
 
